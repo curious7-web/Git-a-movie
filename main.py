@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # main.py
 # Member 3's Task
 
@@ -17,6 +16,5 @@ if __name__ == "__main__":
     # Initialize and run the application
     app = MovieApp(MOVIES_FILE, RATINGS_FILE)
     app.run()
-=======
 print("hello world");
->>>>>>> ddeff7e81629e1e4ae5fb088209f5b8336f23719
+
