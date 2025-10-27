@@ -1,5 +1,5 @@
 # main.py
-# Niranjan 3's Task
+# Aditya's Task
 
 from movie_app import MovieApp
 import os
