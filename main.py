@@ -1,5 +1,5 @@
 # main.py
-# Member 3's Task
+# Niranjan 3's Task
 
 from movie_app import MovieApp
 import os
@@ -16,5 +16,4 @@ if __name__ == "__main__":
     # Initialize and run the application
     app = MovieApp(MOVIES_FILE, RATINGS_FILE)
     app.run()
-print("hello world");
 
