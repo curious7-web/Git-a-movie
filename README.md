@@ -23,8 +23,7 @@ Clone this repository:
     git clone https://github.com/curious7-web/Git-a-movie.git
     cd Git-a-movie
 
-Run the main program:
-        "<write the file name>".py
+Run the main program
 
 To test the recommendation engine separately:
     python recommender.py
