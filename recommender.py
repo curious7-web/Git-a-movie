@@ -121,3 +121,37 @@ class UserSimilarityRecommender(Recommender):
         sorted_candidates = sorted(final_scores, key=final_scores.get, reverse=True)
         
         return [self.movies_db[mid] for mid in sorted_candidates[:num_recs]]
+
+    # -----------------------------------------------------------
+    # 🔁 Recursive Function Added (Requirement 3 - Recursion)
+    # -----------------------------------------------------------
+    def find_similar_users_recursive(self, user_id, depth=2, visited=None):
+        """
+        Recursively find 'friends of friends' (similar users of similar users).
+        This function satisfies the Recursion Requirement.
+        """
+        if visited is None:
+            visited = set()
+        if depth == 0:
+            return set()  # Base case (stop recursion)
+
+        visited.add(user_id)
+        similar_users = set()
+
+        target_liked = {mid for mid, r in self._get_movies_rated_by_user(user_id) if r >= 4.0}
+
+        for other_id, other_ratings in self.users_to_ratings.items():
+            if other_id == user_id or other_id in visited:
+                continue
+            other_liked = {mid for mid, r in other_ratings if r >= 4.0}
+            if not target_liked or not other_liked:
+                continue
+            similarity = len(target_liked & other_liked) / len(target_liked | other_liked)
+            if similarity >= 0.3:
+                similar_users.add(other_id)
+
+        # Recursive step: find similar users of similar users
+        for friend_id in list(similar_users):
+            similar_users |= self.find_similar_users_recursive(friend_id, depth - 1, visited)
+
+        return similar_users
