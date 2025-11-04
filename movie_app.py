@@ -1,5 +1,5 @@
 # movie_app.py
-# Member 3's Task
+# Aditya's Task
 
 import data_manager
 from recommender import GenreRecommender, UserSimilarityRecommender
